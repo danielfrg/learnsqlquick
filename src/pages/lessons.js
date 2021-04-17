@@ -7,7 +7,6 @@ const LessonsPage = ({
         allMarkdownRemark: { edges },
     },
 }) => {
-    console.log(edges)
     const Posts = edges.map(edge => (
         <PostLink key={edge.node.id} post={edge.node} />
     ))

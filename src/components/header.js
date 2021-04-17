@@ -1,33 +1,34 @@
-import { Link } from "gatsby"
+import { Header } from "@primer/components"
+import { Link as GatsbyLink } from "gatsby"
 import PropTypes from "prop-types"
 import * as React from "react"
 
-const Header = ({ siteTitle }) => (
-    <header className="bg-dark site-header">
-        <div className="container">
-            <h1 style={{ margin: 0 }}>
-                <Link
-                    to="/"
-                    style={{
-                        color: `white`,
-                        textDecoration: `none`,
-                    }}
-                >
-                    {siteTitle}
-                </Link>
-            </h1>
-            <Link to="/lessons/">Lessons</Link> <br />
-            <Link to="/questions/">Questions</Link> <br />
-        </div>
-    </header>
+const SiteHeader = ({ siteTitle }) => (
+    <Header>
+        <Header.Item>
+            <Header.Link as={GatsbyLink} to="/" fontSize={3}>
+                <span>{siteTitle}</span>
+            </Header.Link>
+        </Header.Item>
+        <Header.Item>
+            <Header.Link as={GatsbyLink} to="/lessons">
+                Lessons
+            </Header.Link>
+        </Header.Item>
+        <Header.Item>
+            <Header.Link as={GatsbyLink} to="/questions">
+                Questions
+            </Header.Link>
+        </Header.Item>
+    </Header>
 )
 
-Header.propTypes = {
+SiteHeader.propTypes = {
     siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+SiteHeader.defaultProps = {
     siteTitle: `SQL-Interview`,
 }
 
-export default Header
+export default SiteHeader
