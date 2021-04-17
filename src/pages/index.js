@@ -1,6 +1,7 @@
 import { StaticImage } from "gatsby-plugin-image"
 import * as React from "react"
 import SEO from "../components/seo"
+import SQLSection from "../components/SQLSection"
 
 const IndexPage = () => (
     <>
@@ -16,6 +17,7 @@ const IndexPage = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `1.45rem` }}
         />
+        <SQLSection></SQLSection>
     </>
 )
 

@@ -1,6 +1,20 @@
 const _ = require("lodash")
 const path = require("path")
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+    actions.setWebpackConfig({
+        node: {
+            fs: "empty",
+        },
+        resolve: {
+            fallback: {
+                path: require.resolve("path-browserify"),
+                crypto: false,
+            },
+        },
+    })
+}
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
 
