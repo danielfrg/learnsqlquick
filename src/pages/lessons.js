@@ -4,7 +4,7 @@ import PostLink from "../components/post-link"
 
 const LessonsPage = ({
     data: {
-        allMarkdownRemark: { edges },
+        allMdx: { edges },
     },
 }) => {
     const Posts = edges.map(edge => (
@@ -16,16 +16,16 @@ const LessonsPage = ({
 export default LessonsPage
 
 export const lessonsQuery = graphql`
-    query LESSONS {
-        allMarkdownRemark(
-            filter: { frontmatter: { slug: { regex: "/lesson/" } } }
+    query GET_LESSONS {
+        allMdx(
+            filter: { fields: { collection: { eq: "lesson" } } }
             sort: { order: DESC, fields: [frontmatter___date] }
             limit: 1000
         ) {
+            totalCount
             edges {
                 node {
                     id
-                    excerpt(pruneLength: 250)
                     frontmatter {
                         date(formatString: "MMMM DD, YYYY")
                         slug
@@ -33,7 +33,6 @@ export const lessonsQuery = graphql`
                     }
                 }
             }
-            totalCount
         }
     }
 `

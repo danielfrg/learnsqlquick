@@ -8,8 +8,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         },
         resolve: {
             fallback: {
-                path: require.resolve("path-browserify"),
                 crypto: false,
+                fs: false,
+                path: require.resolve("path-browserify"),
             },
         },
     })
@@ -18,7 +19,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
 
-    if (_.get(node, "internal.type") === `MarkdownRemark`) {
+    if (_.get(node, "internal.type") === `Mdx`) {
         // Get the parent node
         const parent = getNode(_.get(node, "parent"))
 
@@ -34,8 +35,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
 
     const results = await graphql(`
-        {
-            allMarkdownRemark(
+        query ALL_CONTENT {
+            allMdx(
                 sort: { order: DESC, fields: [frontmatter___date] }
                 limit: 1000
             ) {
@@ -63,7 +64,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const lessonTemplate = path.resolve(`src/templates/lesson.js`)
     const questionTemplate = path.resolve(`src/templates/question.js`)
 
-    const allEdges = results.data.allMarkdownRemark.edges
+    const allEdges = results.data.allMdx.edges
 
     const lessonEdges = allEdges.filter(
         edge => edge.node.fields.collection === `lesson`

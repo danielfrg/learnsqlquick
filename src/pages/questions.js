@@ -2,9 +2,9 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import PostLink from "../components/post-link"
 
-const LessonsPage = ({
+const QuestionsPage = ({
     data: {
-        allMarkdownRemark: { edges },
+        allMdx: { edges },
     },
 }) => {
     const Posts = edges.map(edge => (
@@ -13,19 +13,19 @@ const LessonsPage = ({
     return <div>{Posts}</div>
 }
 
-export default LessonsPage
+export default QuestionsPage
 
 export const questionsQuery = graphql`
-    query QUESTIONS {
-        allMarkdownRemark(
-            filter: { frontmatter: { slug: { regex: "/question/" } } }
+    query GET_QUESTIONS {
+        allMdx(
+            filter: { fields: { collection: { eq: "question" } } }
             sort: { order: DESC, fields: [frontmatter___date] }
             limit: 1000
         ) {
+            totalCount
             edges {
                 node {
                     id
-                    excerpt(pruneLength: 250)
                     frontmatter {
                         date(formatString: "MMMM DD, YYYY")
                         slug
@@ -33,7 +33,6 @@ export const questionsQuery = graphql`
                     }
                 }
             }
-            totalCount
         }
     }
 `

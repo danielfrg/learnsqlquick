@@ -17,7 +17,6 @@ const IndexPage = () => (
             alt="A Gatsby astronaut"
             style={{ marginBottom: `1.45rem` }}
         />
-        <SQLSection></SQLSection>
     </>
 )
 

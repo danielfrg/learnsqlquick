@@ -31,16 +31,9 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
-        `gatsby-transformer-remark`,
-        {
-            resolve: "gatsby-plugin-copy-files-enhanced",
-            options: {
-                source: `${__dirname}/node_modules/sql.js/dist/sql-wasm.wasm`,
-                destination: "/static/js",
-                purge: false,
-            },
-        },
+        // `gatsby-transformer-remark`,
         `gatsby-transformer-sharp`,
+        `gatsby-plugin-mdx`,
         `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-plugin-manifest`,
