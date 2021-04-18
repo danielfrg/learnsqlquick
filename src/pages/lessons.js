@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import * as React from "react"
 import PostLink from "../components/post-link"
+import SEO from "../components/seo"
 
 const LessonsPage = ({
     data: {
@@ -8,9 +9,17 @@ const LessonsPage = ({
     },
 }) => {
     const Posts = edges.map(edge => (
-        <PostLink key={edge.node.id} post={edge.node} />
+        <li>
+            <PostLink key={edge.node.id} post={edge.node} />
+        </li>
     ))
-    return <div>{Posts}</div>
+    return (
+        <div className="lesson container markdown-body">
+            <SEO title="SQL Lessons" />
+            <h1>SQL Lessons</h1>
+            <ul>{Posts}</ul>
+        </div>
+    )
 }
 
 export default LessonsPage
@@ -19,7 +28,7 @@ export const lessonsQuery = graphql`
     query GET_LESSONS {
         allMdx(
             filter: { fields: { collection: { eq: "lesson" } } }
-            sort: { order: DESC, fields: [frontmatter___date] }
+            sort: { order: ASC, fields: [frontmatter___date] }
             limit: 1000
         ) {
             totalCount

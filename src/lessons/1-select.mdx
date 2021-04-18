@@ -1,0 +1,55 @@
+---
+slug: "/lessons/select"
+date: "2021-04-15"
+title: "SELECT"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+`SELECT` is one of the two `SQL` **required** commands (along with `FROM`).
+
+`SELECT` indicates which columns from a table to be returned. `FROM` indicated the target table where the columns live in.
+
+Let's use `SELECT` to get the name, year and population from all the `states`.
+
+export const q1 = "SELECT year, name, total_population\nFROM states"
+
+<SQLSection defaultValue={q1} autoRun={true}></SQLSection>
+
+Use a wild card `*` to get all the columns from a query.
+
+export const q2 = "SELECT *\nFROM states"
+
+<SQLSection defaultValue={q2} autoRun={true}></SQLSection>
+
+## Aliases
+
+Use the `AS` instruction to rename the colummns
+
+export const q3 =
+    'SELECT name,\n    total_population as "Population",\n    median_age AS "Median Age"\nFROM states'
+
+<SQLSection defaultValue={q3} autoRun={true}></SQLSection>
+
+## LIMIT
+
+`LIMIT` is a simple command that allow you to specify how many rows
+to return from a query.
+
+This is a good practice to avoid returning thousands or millions of rows
+from a query.
+
+export const q4 = "SELECT *\nFROM states\nLIMIT 5"
+
+<SQLSection defaultValue={q4} autoRun={true}></SQLSection>
+
+export const q5 = "SELECT name, total_households\nFROM states\nLIMIT 10"
+
+<ExerciseNote>
+    <p>
+        <b>Exercise: </b> Write a query that selects the first 10 rows the state
+        name and the total number households of the state table:
+    </p>
+    <SQLSection solution={q5}></SQLSection>
+</ExerciseNote>

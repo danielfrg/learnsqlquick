@@ -1,0 +1,25 @@
+---
+slug: "/lessons/data-overview"
+date: "2021-04-01"
+title: "Data Overview"
+---
+
+import SQLSection from "../components/SQLSection"
+
+Let's take a look at the different datasets that we will use during the lessons.
+
+## US American Community Survey (ACS) Census
+
+We will use a simplified version of the [US ACS Census data of 2015](https://www.census.gov/programs-surveys/acs/technical-documentation/table-and-geography-changes/2015/1-year.html)
+that contains 3 tables:
+
+| Table Name              |
+| ----------------------- |
+| states                  |
+| congressional_districts |
+| places                  |
+
+In the editor below we show by default the `states` table.
+Try changing the query to look at the other tables.
+
+<SQLSection defaultValue="SELECT * FROM states" autoRun={true}></SQLSection>

@@ -1,7 +1,13 @@
 import React from "react"
 import { Context as DBContext } from "../components/db-context"
 import SQLTable from "../components/SQLTable"
-import { BorderBox, Flex, ButtonPrimary } from "@primer/components"
+import {
+    BorderBox,
+    Flex,
+    ButtonGroup,
+    Button,
+    ButtonPrimary,
+} from "@primer/components"
 
 import Editor from "@monaco-editor/react"
 
@@ -12,11 +18,18 @@ export default class SQLEditor extends React.Component {
         this.editor = null
         this.state = {
             result: null,
+            madeOneQuery: false,
         }
     }
 
     handleEditorDidMount = (editor, monaco) => {
         this.editor = editor
+
+        const { autoRun } = this.props
+
+        if (autoRun) {
+            this.onRun()
+        }
     }
 
     onRun = () => {
@@ -24,24 +37,44 @@ export default class SQLEditor extends React.Component {
 
         try {
             const result = db.exec(this.editor.getValue())
-            this.setState({ result: result, err: null })
+            this.setState({ result: result, err: null, madeOneQuery: true })
         } catch (err) {
-            this.setState({ result: null, err: err })
+            this.setState({ result: null, err: err, madeOneQuery: true })
+        }
+    }
+
+    onShowSolution = () => {
+        if (this.editor) {
+            this.editor.setValue(this.props.solution)
         }
     }
 
     render() {
-        const { result, err } = this.state
+        const { defaultValue, solution } = this.props
+        const { result, err, madeOneQuery } = this.state
 
-        let results = null
-        if (err) {
-            results = err.message
-        } else {
-            results = <SQLTable table={result}></SQLTable>
+        let resultComponents = null
+        if (madeOneQuery) {
+            if (err) {
+                resultComponents = (
+                    <div class="flash flash-error">{err.message}</div>
+                )
+            } else if (result.length == 0) {
+                resultComponents = (
+                    <div class="flash flash-error">Empty table</div>
+                )
+            } else {
+                resultComponents = <SQLTable table={result}></SQLTable>
+            }
+        }
+
+        let bg = null
+        if (!solution) {
+            bg = "editor-greygb"
         }
 
         return (
-            <Flex className="editor" flexDirection="rows">
+            <Flex className={`sqleditor ${bg}`} flexDirection="rows">
                 <Flex
                     className="item"
                     flexDirection="column"
@@ -55,15 +88,23 @@ export default class SQLEditor extends React.Component {
                                     enabled: false,
                                 },
                             }}
-                            onMount={this.handleEditorDidMount}
+                            className="editor"
                             width="100%"
-                            height="200px"
+                            height="100%"
+                            // theme="vs-dark"
                             defaultLanguage="sql"
-                            defaultValue="SELECT * FROM states;"
-                            // defaultValue="SELECT 1, 222222, 3;"
+                            defaultValue={defaultValue}
+                            onMount={this.handleEditorDidMount}
                         />
                     </BorderBox>
-                    <ButtonPrimary onClick={this.onRun}>Run</ButtonPrimary>
+                    <ButtonGroup my={2}>
+                        <ButtonPrimary onClick={this.onRun}>Run</ButtonPrimary>
+                        {solution ? (
+                            <Button onClick={this.onShowSolution}>
+                                Show solution
+                            </Button>
+                        ) : null}
+                    </ButtonGroup>
                 </Flex>
                 <Flex
                     className="item"
@@ -71,7 +112,7 @@ export default class SQLEditor extends React.Component {
                     flexBasis="0"
                     flexGrow="1"
                 >
-                    {results}
+                    {resultComponents}
                 </Flex>
             </Flex>
         )

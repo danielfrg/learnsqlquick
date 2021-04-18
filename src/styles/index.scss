@@ -1,27 +1,53 @@
-@import "@primer/css/core/index.scss";
-@import "@primer/css/markdown/index.scss";
+@import "@primer/css/index.scss";
 
 .container {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 1200px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    table,
+    ul,
+    ol {
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
+    }
 }
 
-.content {
-    width: 700px;
+.lesson {
+    margin: 30px auto 50px;
 }
 
 .markdown-body {
-    .editor {
-        max-height: 300px;
+    .sqleditor {
+        max-height: 400px;
+        margin: 20px 0;
 
         .item {
             margin: 5px;
         }
+
+        .editor {
+            width: 100%;
+            min-height: 300px;
+        }
+    }
+
+    .editor-greygb {
+        background-color: rgb(246, 248, 250);
+        padding: 20px;
     }
 
     .table {
         overflow: scroll;
-        max-width: 500px;
+        max-height: 335px;
+        max-width: 575px;
     }
 
     table {
@@ -37,5 +63,16 @@
         td {
             display: table-cell;
         }
+    }
+
+    .exercise {
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 6px;
+        border-left: 6px solid rgb(33, 136, 255);
+        border-top-color: rgb(33, 136, 255);
+        border-right-color: rgb(33, 136, 255);
+        border-bottom-color: rgb(33, 136, 255);
+        background-color: rgb(241, 248, 255);
     }
 }
