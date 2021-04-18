@@ -6,11 +6,13 @@ export default function SQLSection(props) {
     return (
         <DBConsumer>
             {value => (
-                <SQLEditor
-                    autoRun={props.autoRun}
-                    defaultValue={props.defaultValue}
-                    solution={props.solution}
-                ></SQLEditor>
+                <div className="sqlsection">
+                    <SQLEditor
+                        autoRun={props.autoRun}
+                        defaultValue={props.defaultValue}
+                        solution={props.solution}
+                    ></SQLEditor>
+                </div>
             )}
         </DBConsumer>
     )

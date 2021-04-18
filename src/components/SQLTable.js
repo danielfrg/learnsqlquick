@@ -28,7 +28,7 @@ export default class SQLTable extends React.Component {
         })
 
         return (
-            <div className="table">
+            <div className="table markdown-body">
                 <table>
                     <thead>
                         <tr>{headers}</tr>

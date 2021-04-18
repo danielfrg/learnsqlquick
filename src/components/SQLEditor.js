@@ -57,15 +57,22 @@ export default class SQLEditor extends React.Component {
         if (madeOneQuery) {
             if (err) {
                 resultComponents = (
-                    <div class="flash flash-error">{err.message}</div>
+                    <div className="flash flash-error">{err.message}</div>
                 )
             } else if (result.length == 0) {
                 resultComponents = (
-                    <div class="flash flash-error">Empty table</div>
+                    <div className="flash flash-error">Empty table</div>
                 )
             } else {
                 resultComponents = <SQLTable table={result}></SQLTable>
             }
+        } else {
+            resultComponents = (
+                <div className="blankslate">
+                    <h3 className="mb-1">No results yet</h3>
+                    <p>Click on the run button</p>
+                </div>
+            )
         }
 
         let bg = null

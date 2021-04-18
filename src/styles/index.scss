@@ -2,7 +2,7 @@
 
 .container {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1280px;
 
     h1,
     h2,
@@ -20,11 +20,115 @@
     }
 }
 
+.container-xl {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.site-header {
+    background-color: rgb(27, 31, 35);
+
+    .nav {
+        background-color: rgb(27, 31, 35) !important;
+    }
+
+    a {
+        color: rgb(200, 225, 255);
+
+        &:hover {
+            color: rgb(200, 225, 255);
+            text-decoration: underline;
+        }
+    }
+}
+
+.index {
+    h2 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .get-started {
+        background-color: rgb(219, 237, 255);
+        padding: 50px;
+
+        .items {
+            max-width: 500px;
+            margin: 20px auto 0;
+        }
+
+        .item {
+            flex-basis: 0;
+            flex-grow: 1;
+            padding-right: 32px;
+            margin-bottom: 64px;
+            font-size: 16px;
+
+            a {
+                color: #000;
+
+                &:hover {
+                    color: #000;
+                    text-decoration: underline;
+                }
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .editor-demo {
+        margin: 50px auto;
+    }
+}
+
+.jumbo {
+    // max-width: 1280px;
+    padding: 80px 40px;
+    // padding-left: 32px;
+    // padding-right: 32px;
+    background-color: rgb(27, 31, 35);
+    color: rgb(200, 225, 255);
+
+    .content {
+        margin: 0 auto;
+        max-width: 1280px;
+
+        h1 {
+            font-size: 84px;
+            margin: 0px 0px 8px;
+            color: rgb(33, 136, 255);
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 40px;
+            color: rgb(219, 237, 255);
+            text-align: left;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        a {
+            color: rgb(121, 184, 255);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 .lesson {
     margin: 30px auto 50px;
 }
 
-.markdown-body {
+.sqlsection {
     .sqleditor {
         max-height: 400px;
         margin: 20px 0;
@@ -74,5 +178,31 @@
         border-right-color: rgb(33, 136, 255);
         border-bottom-color: rgb(33, 136, 255);
         background-color: rgb(241, 248, 255);
+    }
+}
+
+.site-footer {
+    // padding: 50px 0;
+
+    // .container-xl {
+    //     padding: 20px 0;
+    // }
+
+    .nav {
+        padding-top: 30px;
+        padding-bottom: 50px;
+        border-top: 1px solid var(--color-border-secondary);
+        background-color: transparent;
+        color: var(--color-text-secondary) !important;
+
+        a {
+            font-weight: 400;
+            color: var(--color-text-link);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
