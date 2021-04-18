@@ -2,17 +2,16 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 
+import { Link } from "gatsby"
+
 export default function Template({ data }) {
     const { mdx } = data
     const { frontmatter, body } = mdx
 
     return (
-        <div className="blog-post-container">
-            <div className="blog-post">
-                <h1>{frontmatter.title}</h1>
-                <h2>{frontmatter.date}</h2>
-                <MDXRenderer>{body}</MDXRenderer>
-            </div>
+        <div>
+            <h1>{frontmatter.title}</h1>
+            <MDXRenderer>{body}</MDXRenderer>
         </div>
     )
 }

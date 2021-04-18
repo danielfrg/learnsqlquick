@@ -14,6 +14,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@monaco-editor/react": "^4.1.1",
     "@primer/components": "^27.0.0",
     "@primer/css": "^16.3.0",
     "gatsby": "^3.2.1",
@@ -53,7 +54,11 @@
     "sass-loader": "^11.0.1"
   },
   "keywords": [
-    "SQL", "gatsby", "React", "SQLite", "sql.js"
+    "SQL",
+    "gatsby",
+    "React",
+    "SQLite",
+    "sql.js"
   ],
   "license": "Apache-2.0",
   "scripts": {

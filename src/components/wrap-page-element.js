@@ -7,7 +7,7 @@ function wrapPageElement({ element }) {
     return (
         <BaseStyles>
             <SiteHeader />
-            <Flex className="container">
+            <Flex className="container markdown-body">
                 <Grid className="content">{element}</Grid>
             </Flex>
         </BaseStyles>

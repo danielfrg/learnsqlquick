@@ -1,11 +1,5 @@
-// @import "custom";
-// @import "@primer/css/utilities/index.scss";
-
-// header.site-header {
-//     background-color: #121f3d !important;
-//     color: #fff;
-//     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%);
-// }
+@import "@primer/css/core/index.scss";
+@import "@primer/css/markdown/index.scss";
 
 .container {
     margin: 0 auto;
@@ -14,4 +8,34 @@
 
 .content {
     width: 700px;
+}
+
+.markdown-body {
+    .editor {
+        max-height: 300px;
+
+        .item {
+            margin: 5px;
+        }
+    }
+
+    .table {
+        overflow: scroll;
+        max-width: 500px;
+    }
+
+    table {
+        // width: 100%;
+        // table-layout: fixed;
+        // display: table;
+
+        // tbody {
+        //     overflow-y: auto; /* Trigger vertical scroll    */
+        //     overflow-x: hidden; /* Hide the horizontal scroll */
+        // }
+
+        td {
+            display: table-cell;
+        }
+    }
 }
