@@ -1,0 +1,40 @@
+---
+slug: "/lessons/where"
+date: "2021-04-02"
+title: "WHERE"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+`WHERE` allows you to filter the rows of a table.
+
+Let's get only all the states with more than 10M people living in it.
+
+export const q1 =
+    "SELECT name, total_population\nFROM states WHERE total_population >= 10000000"
+
+<SQLSection defaultValue={q1} autoRun={false}></SQLSection>
+
+## Comparison operators
+
+Above we used the Greated than operator (`>`).
+
+| Descripton               | SQL operator        |
+| ------------------------ | ------------------- |
+| Equal to                 | `=` (single equals) |
+| Not equal to             | `<>` or `!=`        |
+| Greater than             | `>`                 |
+| Less than                | `<`                 |
+| Greater than or equal to | `>=`                |
+| Less than or equal to    | `<=`                |
+
+export const l2_q1 =
+    'SELECT total_population\nFROM states\nWHERE name = "Alabama"'
+
+<ExerciseNote>
+    <p>
+        <b>Exercise: </b> Does Alabama has more than 4 million people?
+    </p>
+    <SQLSection solution={l2_q1}></SQLSection>
+</ExerciseNote>
