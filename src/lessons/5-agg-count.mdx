@@ -7,8 +7,8 @@ title: "COUNT"
 import SQLSection from "../components/SQLSection"
 import ExerciseNote from "../components/ExerciseNote"
 
-`COUNT` is part of the aggregate functions that used to perform operations across entire columns.
-This are similar to the arithmetic operations that perform operations in rows.
+`COUNT` is part of the aggregate functions that used to perform operations across entire columns (vertically).
+This are similar to the arithmetic operations that perform operations in rows (horizontally).
 
 `COUNT` counts how many rows are in a particular column.
 
@@ -18,14 +18,22 @@ We can count all rows in a table.
 
 export const l5_q1 = "SELECT COUNT(*)\nFROM states"
 
-<SQLSection defaultValue={l5_q1} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l5_q1}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 ### Count individual columns
 
 export const l5_q2 =
     "SELECT COUNT(name), COUNT(below_poverty_line)\nFROM states"
 
-<SQLSection defaultValue={l5_q2} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l5_q2}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 <div class="container-text flash flash-warn">
     <p>
@@ -45,7 +53,11 @@ to clean up the default names returned by SQL, e.g. `COUNT(name)`, to be more me
 
 export const l5_q3 = 'SELECT COUNT(name) AS "Number of States"\nFROM states'
 
-<SQLSection defaultValue={l5_q3} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l5_q3}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 <div class="container-text flash flash-warn">
     <p>

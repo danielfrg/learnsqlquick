@@ -1,0 +1,36 @@
+---
+slug: "/lessons/avg"
+date: "2021-04-08"
+title: "AVG"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+`AVG` is part of the aggregate functions that are used to perform operations across entire columns (vertically).
+This are similar to the arithmetic operations that perform operations in rows (horizontally).
+
+`AVG` calculates the average of a group of selected values.
+
+-   You can only use `AVG` on columns containing numerical values.
+-   `AVG` will ignore all `NULL` values
+
+---
+
+Let's calculate a simple `AVG` on a couple of columns.
+
+export const l8_q1 =
+    "SELECT AVG(total_population),\n    AVG(hispanic),\n    AVG(white - black)\nFROM places"
+
+<SQLSection defaultValue={l8_q1} classes="editor-wrapper"></SQLSection>
+
+## Handle NULL values
+
+As we mentioned `AVG` ignores all `NULL` values, there are some cases
+where you want this values to be counted for in the calculation, for example to be 0.
+You can achieve that using `CASE`.
+
+export const l8_q2 =
+    'SELECT AVG(white) AS "Normal AVG",\n    AVG(CASE WHEN white IS NULL THEN 0 ELSE white END) AS "Fixed AVG"\nFROM places'
+
+<SQLSection defaultValue={l8_q2} classes="editor-wrapper"></SQLSection>

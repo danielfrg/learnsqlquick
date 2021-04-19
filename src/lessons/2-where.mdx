@@ -14,11 +14,15 @@ Let's get only all the states with more than 10M people living in it.
 export const l2_q1 =
     "SELECT name, total_population\nFROM states WHERE total_population >= 10000000"
 
-<SQLSection defaultValue={l2_q1} autoRun={false}></SQLSection>
+<SQLSection
+    defaultValue={l2_q1}
+    autoRun={false}
+    classes="editor-wrapper"
+></SQLSection>
 
 ## Comparison operators
 
-Above we used the Greated than operator (`>`).
+Above we used the greater than operator (`>`).
 
 | Descripton               | SQL operator        |
 | ------------------------ | ------------------- |

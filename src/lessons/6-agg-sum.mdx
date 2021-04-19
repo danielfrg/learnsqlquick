@@ -10,14 +10,18 @@ import ExerciseNote from "../components/ExerciseNote"
 `SUM` is part of the aggregate functions that are used to perform operations across entire columns (vertically).
 This are similar to the arithmetic operations that perform operations in rows (horizontally).
 
-`COUNT` adds together all the values in a particular column.
+`SUM` adds together all the values in a particular column.
 
 You can only use `SUM` on columns containing numerical values.
 
 export const l6_q1 =
     'SELECT SUM(total_population) AS "Total population"\nFROM states'
 
-<SQLSection defaultValue={l6_q1} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l6_q1}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 <div class="container-text flash flash-warn">
     <p>

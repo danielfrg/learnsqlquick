@@ -24,7 +24,7 @@ and where there are more hispanics than black.
 export const l3_q1 =
     "SELECT name, white, black, hispanic\nFROM states\nWHERE white > 5000000 AND hispanic > black"
 
-<SQLSection defaultValue={l3_q1}></SQLSection>
+<SQLSection defaultValue={l3_q1} classes="editor-wrapper"></SQLSection>
 
 ## IS NULL
 
@@ -38,7 +38,7 @@ In the `state` table there are some missing values in the `below_poverty_line` c
 export const l3_q2 =
     "SELECT name, below_poverty_line\nFROM states\nWHERE below_poverty_line IS NULL"
 
-<SQLSection defaultValue={l3_q2}></SQLSection>
+<SQLSection defaultValue={l3_q2} classes="editor-wrapper"></SQLSection>
 
 <p>
     <ExerciseNote>
@@ -56,7 +56,7 @@ For example let's say you want to get results for 3 specific states.
 export const l3_q3 =
     "SELECT name, total_population\nFROM states\nWHERE name IN ('Texas', 'California', 'New York')"
 
-<SQLSection defaultValue={l3_q3}></SQLSection>
+<SQLSection defaultValue={l3_q3} classes="editor-wrapper"></SQLSection>
 
 ## BETWEEN
 
@@ -68,7 +68,7 @@ For example, let's find out which states have a number of hispanics between the 
 export const l3_q4 =
     "SELECT name, black, hispanic\nFROM states\nWHERE hispanic BETWEEN black AND 100000"
 
-<SQLSection defaultValue={l3_q4}></SQLSection>
+<SQLSection defaultValue={l3_q4} classes="editor-wrapper"></SQLSection>
 
 ## LIKE and ILIKE.
 
@@ -81,7 +81,7 @@ For example, lets get all the states that start with `T`.
 
 export const l3_q5 = "SELECT name\nFROM states\nWHERE name LIKE 'T%'"
 
-<SQLSection defaultValue={l3_q5}></SQLSection>
+<SQLSection defaultValue={l3_q5} classes="editor-wrapper"></SQLSection>
 
 <div class="container-text flash flash-warn">
     <p>

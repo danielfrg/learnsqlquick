@@ -15,13 +15,21 @@ Let's use `SELECT` to get the name, year and population from all the `states`.
 
 export const l1_q1 = "SELECT year, name, total_population\nFROM states"
 
-<SQLSection defaultValue={l1_q1} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l1_q1}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 Use a wild card `*` to get all the columns from a query.
 
 export const l1_q2 = "SELECT *\nFROM states"
 
-<SQLSection defaultValue={l1_q2} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l1_q2}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 ## Aliases
 
@@ -30,7 +38,11 @@ Use the `AS` instruction to rename the colummns
 export const l1_q3 =
     'SELECT name,\n    total_population as "Population",\n    median_age AS "Median Age"\nFROM states'
 
-<SQLSection defaultValue={l1_q3} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l1_q3}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 ## LIMIT
 
@@ -42,7 +54,11 @@ from a query.
 
 export const l1_q4 = "SELECT *\nFROM states\nLIMIT 5"
 
-<SQLSection defaultValue={l1_q4} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l1_q4}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 export const l1_q5 = "SELECT name, total_households\nFROM states\nLIMIT 10"
 
@@ -65,7 +81,7 @@ For example let's get the percetage of people who are either white or black in e
 export const l1_q6 =
     'SELECT name,\n    (CAST(white AS float) + black) / total_population AS "percentage"\nFROM states\nLIMIT 10'
 
-<SQLSection defaultValue={l1_q6}></SQLSection>
+<SQLSection defaultValue={l1_q6} classes="editor-wrapper"></SQLSection>
 
 <div class="container-text flash flash-warn">
     <p>

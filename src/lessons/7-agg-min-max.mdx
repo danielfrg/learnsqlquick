@@ -21,14 +21,22 @@ Let's find out the state with the lowest population.
 
 export const l7_q1 = "SELECT name, MIN(total_population)\nFROM states"
 
-<SQLSection defaultValue={l7_q1} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l7_q1}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 What if we want to find out the state with the lowest **and** highest population.
 
 export const l7_q2 =
     "SELECT name, MIN(total_population), MAX(total_population)\nFROM states"
 
-<SQLSection defaultValue={l7_q2} autoRun={true}></SQLSection>
+<SQLSection
+    defaultValue={l7_q2}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
 
 You can see that the aggregates values in the `MIN` and `MAX` columns is correct,
 meaning its showing Wyoming population as MIN and California as MAX, but the `name`

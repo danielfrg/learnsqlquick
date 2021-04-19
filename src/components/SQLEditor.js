@@ -1,15 +1,8 @@
+import Editor from "@monaco-editor/react"
+import { Button, ButtonGroup, ButtonPrimary, Flex } from "@primer/components"
 import React from "react"
 import { Context as DBContext } from "../components/db-context"
 import SQLTable from "../components/SQLTable"
-import {
-    BorderBox,
-    Flex,
-    ButtonGroup,
-    Button,
-    ButtonPrimary,
-} from "@primer/components"
-
-import Editor from "@monaco-editor/react"
 
 export default class SQLEditor extends React.Component {
     constructor() {
@@ -91,18 +84,20 @@ export default class SQLEditor extends React.Component {
             )
         }
 
-        let bg = null
-        if (!solution) {
-            bg = "editor-greygb"
-        }
-
         return (
-            <Flex className={`editor-group ${bg}`} flexDirection="rows">
+            <Flex
+                className={`editor-group ${this.props.classes}`}
+                flexDirection="rows"
+                flexGrow="1"
+                flexShrink="1"
+                flexBasis="0px"
+            >
                 <Flex
                     className="item"
                     flexDirection="column"
-                    flexBasis="0"
-                    flexGrow="4"
+                    flexGrow="1"
+                    flexShrink="1"
+                    flexBasis="0px"
                 >
                     <Editor
                         options={{
@@ -119,7 +114,7 @@ export default class SQLEditor extends React.Component {
                         onMount={this.handleEditorDidMount}
                     />
 
-                    <ButtonGroup my={2}>
+                    <ButtonGroup className="buttons">
                         <ButtonPrimary onClick={this.onRun}>Run</ButtonPrimary>
                         {solution ? (
                             <Button onClick={this.onShowSolution}>
@@ -131,8 +126,9 @@ export default class SQLEditor extends React.Component {
                 <Flex
                     className="item"
                     flexDirection="column"
-                    flexBasis="0"
-                    flexGrow="6"
+                    flexGrow="1"
+                    flexShrink="1"
+                    flexBasis="0px"
                 >
                     {resultComponents}
                 </Flex>

@@ -11,6 +11,7 @@ export default function SQLSection(props) {
                         autoRun={props.autoRun}
                         defaultValue={props.defaultValue}
                         solution={props.solution}
+                        classes={props.classes}
                     ></SQLEditor>
                 </div>
             )}
