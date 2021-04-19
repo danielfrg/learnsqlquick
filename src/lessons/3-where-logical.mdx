@@ -22,18 +22,18 @@ For example, lets find out the which states have more than 5 million white peopl
 and where there are more hispanics than black.
 
 export const l3_q1 =
-    "SELECT name, white, black, hispanic\nFROM states\nWHERE white > 5000000 AND black > hispanic"
+    "SELECT name, white, black, hispanic\nFROM states\nWHERE white > 5000000 AND hispanic > black"
 
 <SQLSection defaultValue={l3_q1}></SQLSection>
 
 ## IS NULL
 
-`IS NULL` compares if the selected rows that contain no data in a given column.
+`IS NULL` compares if the rows of a given column contain no data.
 
-You cannot compare to NULL using the equals `=` operator because `NULL`
+You cannot compare to NULL using the equals operator (`=`) because `NULL`
 is a special value in SQL and cannot be used to perform arithmetic operations.
 
-In this particular data set there are some missing values in the `below_poverty_line` columns.
+In the `state` table there are some missing values in the `below_poverty_line` columns.
 
 export const l3_q2 =
     "SELECT name, below_poverty_line\nFROM states\nWHERE below_poverty_line IS NULL"
@@ -49,9 +49,9 @@ export const l3_q2 =
 
 ## IN and BETWEEN
 
--   IN compares the value of a column to a list of values
--   BETWEEN compares the value of a column within a certain range
+-   `IN` compares the value of a column to a list of values
+-   `BETWEEN` compares the value of a column within a certain range
 
 ## LIKE
 
-LIKE allows you to match similar values instead of exact values.
+`LIKE` allows you to match similar values instead of exact values.
