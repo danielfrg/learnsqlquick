@@ -32,7 +32,7 @@ SiteHeader.propTypes = {
 }
 
 SiteHeader.defaultProps = {
-    siteTitle: `SQL-Interview`,
+    siteTitle: `Learn SQL quick`,
 }
 
 export default SiteHeader

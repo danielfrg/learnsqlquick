@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: `SQL Interview`,
-        description: `Practice for your next SQL Interview`,
+        title: `Learn SQL quick`,
+        description: `Learn SQL quick here. For a job interview, an exam, homework, whatever the reason`,
         author: `@danielfrg`,
     },
     plugins: [

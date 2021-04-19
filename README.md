@@ -1,1 +1,1 @@
-# sql-interview
+# learnsqlquick

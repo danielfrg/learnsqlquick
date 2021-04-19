@@ -1,15 +1,15 @@
 {
-  "name": "sql-interview",
+  "name": "learnsqlquick",
   "private": true,
   "description": "",
   "version": "1.0.0",
   "author": "Daniel Rodriguez <daniel@danielfrg.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielfrg/sql-interview"
+    "url": "https://github.com/danielfrg/learnsqlquick"
   },
   "bugs": {
-    "url": "https://github.com/danielfrg/sql-interview/issues"
+    "url": "https://github.com/danielfrg/learnsqlquick/issues"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",

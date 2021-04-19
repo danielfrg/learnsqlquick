@@ -31,7 +31,7 @@ const SiteFooter = ({ siteTitle }) => (
                 <Header.Item>
                     <p>
                         Source on{" "}
-                        <a href="https://github.com/danielfrg/sql-interview">
+                        <a href="https://github.com/danielfrg/learnsqlquick">
                             GitHub
                         </a>
                     </p>
@@ -46,7 +46,7 @@ SiteFooter.propTypes = {
 }
 
 SiteFooter.defaultProps = {
-    siteTitle: `SQL-Interview`,
+    siteTitle: `Learn SQL quick`,
 }
 
 export default SiteFooter

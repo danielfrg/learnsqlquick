@@ -1,10 +1,9 @@
-import { StaticImage } from "gatsby-plugin-image"
 import { Flex } from "@primer/components"
 import { Link } from "gatsby"
-
 import * as React from "react"
 import SEO from "../components/seo"
 import SQLSection from "../components/SQLSection"
+
 
 const IndexPage = () => {
     const defaultQuery =
@@ -17,25 +16,24 @@ const IndexPage = () => {
                 <div className="jumbo" data-color-mode="dark">
                     <Flex className="content">
                         <div>
-                            <h1>SQL Interview</h1>
+                            <h1>Learn SQL quick</h1>
                             <h2>
-                                Prepare your next SQL Interview or exam for
-                                free.
+                                Prepare for a job interview, an exam, homework, whatever.
                             </h2>
                             <h2>No subscription, no registration.</h2>
                             <p>
                                 Our <Link to="/lessons">lessons</Link> go
                                 straight to the point and are designed to help
-                                you remember concepts and prepare for your next
-                                SQL Interview.
+                                you learn or remember concepts and prepare for your next
+                                SQL interview or exam.
                             </p>
                             <p>
                                 The interactive inline SQL Editor allows you to
-                                quickly test queries.
+                                quickly iterate and test queries.
                             </p>
                             <p>
                                 All the content on this website is{" "}
-                                <a href="https://github.com/danielfrg/sql-interview">
+                                <a href="https://github.com/danielfrg/learnsqlquick">
                                     Open Source
                                 </a>{" "}
                                 and available to anyone.
