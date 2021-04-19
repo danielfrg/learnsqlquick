@@ -14,7 +14,7 @@ const LessonsPage = ({
         </li>
     ))
     return (
-        <div className="lesson container markdown-body">
+        <div className="lesson container-text markdown-body">
             <SEO title="SQL Lessons" />
             <h1>SQL Lessons</h1>
             <ul>{Posts}</ul>

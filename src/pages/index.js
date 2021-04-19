@@ -24,10 +24,10 @@ const IndexPage = () => {
                             </h2>
                             <h2>No subscription, no registration.</h2>
                             <p>
-                                Our <Link to="/lessons">lessons</Link> are
-                                straight to the point and designed to help you
-                                remember concepts and prepare for your next SQL
-                                Interview.
+                                Our <Link to="/lessons">lessons</Link> go
+                                straight to the point and are designed to help
+                                you remember concepts and prepare for your next
+                                SQL Interview.
                             </p>
                             <p>
                                 The interactive inline SQL Editor allows you to

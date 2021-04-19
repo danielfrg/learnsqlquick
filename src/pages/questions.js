@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import * as React from "react"
 import PostLink from "../components/post-link"
+import SEO from "../components/seo"
 
 const QuestionsPage = ({
     data: {
@@ -8,9 +9,17 @@ const QuestionsPage = ({
     },
 }) => {
     const Posts = edges.map(edge => (
-        <PostLink key={edge.node.id} post={edge.node} />
+        <li>
+            <PostLink key={edge.node.id} post={edge.node} />
+        </li>
     ))
-    return <div>{Posts}</div>
+    return (
+        <div className="lesson container-text markdown-body">
+            <SEO title="Questions" />
+            <h1>Interview Questions</h1>
+            <ul>{Posts}</ul>
+        </div>
+    )
 }
 
 export default QuestionsPage

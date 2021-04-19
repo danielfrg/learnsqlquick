@@ -1,18 +1,24 @@
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { Flex, Grid } from "@primer/components"
 import React from "react"
+import SEO from "../components/seo"
 
 export default function Template({ data }) {
     const { mdx } = data
     const { frontmatter, body } = mdx
 
     return (
-        <div className="blog-post-container">
-            <div className="blog-post">
+        <>
+            <SEO title={frontmatter.title} />
+            <Flex
+                className="lesson container-text markdown-body"
+                flexDirection="column"
+            >
                 <h1>{frontmatter.title}</h1>
                 <MDXRenderer>{body}</MDXRenderer>
-            </div>
-        </div>
+            </Flex>
+        </>
     )
 }
 

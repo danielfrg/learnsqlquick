@@ -1,6 +1,11 @@
 @import "@primer/css/index.scss";
 
-.container {
+.container-xl {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.container-text {
     margin: 0 auto;
     max-width: 1280px;
 
@@ -13,16 +18,12 @@
     p,
     table,
     ul,
-    ol {
+    ol,
+    span {
         margin-left: auto;
         margin-right: auto;
         width: 700px;
     }
-}
-
-.container-xl {
-    margin: 0 auto;
-    max-width: 1280px;
 }
 
 .site-header {
@@ -38,6 +39,10 @@
         &:hover {
             color: rgb(200, 225, 255);
             text-decoration: underline;
+        }
+
+        &:focus {
+            color: rgb(200, 225, 255);
         }
     }
 }
@@ -116,10 +121,10 @@
 
         a {
             color: rgb(121, 184, 255);
-        }
 
-        a:hover {
-            text-decoration: underline;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
@@ -129,17 +134,33 @@
 }
 
 .sqlsection {
-    .sqleditor {
+    .editor-group {
         max-height: 400px;
         margin: 20px 0;
 
-        .item {
-            margin: 5px;
+        .item:not(:last-child) {
+            margin-right: 20px;
         }
 
         .editor {
             width: 100%;
+            max-width: 500px;
             min-height: 300px;
+        }
+
+        .table {
+            overflow: scroll;
+            min-width: 730px;
+            max-height: 335px;
+
+            table {
+                margin: 0 !important;
+                width: 730px;
+
+                td {
+                    display: table-cell;
+                }
+            }
         }
     }
 
@@ -147,47 +168,20 @@
         background-color: rgb(246, 248, 250);
         padding: 20px;
     }
+}
 
-    .table {
-        overflow: scroll;
-        max-height: 335px;
-        max-width: 575px;
-    }
-
-    table {
-        // width: 100%;
-        // table-layout: fixed;
-        // display: table;
-
-        // tbody {
-        //     overflow-y: auto; /* Trigger vertical scroll    */
-        //     overflow-x: hidden; /* Hide the horizontal scroll */
-        // }
-
-        td {
-            display: table-cell;
-        }
-    }
-
-    .exercise {
-        padding: 16px;
-        margin-bottom: 16px;
-        border-radius: 6px;
-        border-left: 6px solid rgb(33, 136, 255);
-        border-top-color: rgb(33, 136, 255);
-        border-right-color: rgb(33, 136, 255);
-        border-bottom-color: rgb(33, 136, 255);
-        background-color: rgb(241, 248, 255);
-    }
+.exercise {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border-left: 6px solid rgb(33, 136, 255);
+    border-top-color: rgb(33, 136, 255);
+    border-right-color: rgb(33, 136, 255);
+    border-bottom-color: rgb(33, 136, 255);
+    background-color: rgb(241, 248, 255);
 }
 
 .site-footer {
-    // padding: 50px 0;
-
-    // .container-xl {
-    //     padding: 20px 0;
-    // }
-
     .nav {
         padding-top: 30px;
         padding-bottom: 50px;

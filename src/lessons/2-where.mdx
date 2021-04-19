@@ -11,10 +11,10 @@ import ExerciseNote from "../components/ExerciseNote"
 
 Let's get only all the states with more than 10M people living in it.
 
-export const q1 =
+export const l2_q1 =
     "SELECT name, total_population\nFROM states WHERE total_population >= 10000000"
 
-<SQLSection defaultValue={q1} autoRun={false}></SQLSection>
+<SQLSection defaultValue={l2_q1} autoRun={false}></SQLSection>
 
 ## Comparison operators
 
@@ -29,12 +29,12 @@ Above we used the Greated than operator (`>`).
 | Greater than or equal to | `>=`                |
 | Less than or equal to    | `<=`                |
 
-export const l2_q1 =
+export const l2_q2 =
     'SELECT total_population\nFROM states\nWHERE name = "Alabama"'
 
 <ExerciseNote>
     <p>
         <b>Exercise: </b> Does Alabama has more than 4 million people?
     </p>
-    <SQLSection solution={l2_q1}></SQLSection>
+    <SQLSection solution={l2_q2}></SQLSection>
 </ExerciseNote>

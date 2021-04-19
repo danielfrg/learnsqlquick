@@ -17,8 +17,8 @@ export default class SQLEditor extends React.Component {
 
         this.editor = null
         this.state = {
-            result: null,
-            madeOneQuery: false,
+            queryResult: null,
+            queryError: null,
         }
     }
 
@@ -35,11 +35,21 @@ export default class SQLEditor extends React.Component {
     onRun = () => {
         const { db } = this.context
 
-        try {
-            const result = db.exec(this.editor.getValue())
-            this.setState({ result: result, err: null, madeOneQuery: true })
-        } catch (err) {
-            this.setState({ result: null, err: err, madeOneQuery: true })
+        if (db) {
+            try {
+                db.exec(this.editor.getValue())
+                    .then(result =>
+                        this.setState({
+                            queryResult: result,
+                            queryError: null,
+                        })
+                    )
+                    .catch(err =>
+                        this.setState({ queryResult: null, queryError: err })
+                    )
+            } catch (err) {
+                this.setState({ queryResult: null, queryError: err })
+            }
         }
     }
 
@@ -51,26 +61,32 @@ export default class SQLEditor extends React.Component {
 
     render() {
         const { defaultValue, solution } = this.props
-        const { result, err, madeOneQuery } = this.state
+        const { queryResult, queryError, madeOneQuery } = this.state
 
         let resultComponents = null
-        if (madeOneQuery) {
-            if (err) {
+
+        if (queryError) {
+            resultComponents = (
+                <div className="flash flash-error">
+                    <b>Error: </b>
+                    {queryError.message}
+                </div>
+            )
+        } else if (queryResult) {
+            if (queryResult.length == 0) {
                 resultComponents = (
-                    <div className="flash flash-error">{err.message}</div>
-                )
-            } else if (result.length == 0) {
-                resultComponents = (
-                    <div className="flash flash-error">Empty table</div>
+                    <div className="flash flash-error">
+                        <b>Error: </b>Empty table
+                    </div>
                 )
             } else {
-                resultComponents = <SQLTable table={result}></SQLTable>
+                resultComponents = <SQLTable table={queryResult}></SQLTable>
             }
         } else {
             resultComponents = (
                 <div className="blankslate">
                     <h3 className="mb-1">No results yet</h3>
-                    <p>Click on the run button</p>
+                    <p>Click the run button</p>
                 </div>
             )
         }
@@ -81,29 +97,28 @@ export default class SQLEditor extends React.Component {
         }
 
         return (
-            <Flex className={`sqleditor ${bg}`} flexDirection="rows">
+            <Flex className={`editor-group ${bg}`} flexDirection="rows">
                 <Flex
                     className="item"
                     flexDirection="column"
                     flexBasis="0"
-                    flexGrow="1"
+                    flexGrow="4"
                 >
-                    <BorderBox>
-                        <Editor
-                            options={{
-                                minimap: {
-                                    enabled: false,
-                                },
-                            }}
-                            className="editor"
-                            width="100%"
-                            height="100%"
-                            // theme="vs-dark"
-                            defaultLanguage="sql"
-                            defaultValue={defaultValue}
-                            onMount={this.handleEditorDidMount}
-                        />
-                    </BorderBox>
+                    <Editor
+                        options={{
+                            minimap: {
+                                enabled: false,
+                            },
+                        }}
+                        className="editor"
+                        width="100%"
+                        height="100%"
+                        // theme="vs-dark"
+                        defaultLanguage="sql"
+                        defaultValue={defaultValue}
+                        onMount={this.handleEditorDidMount}
+                    />
+
                     <ButtonGroup my={2}>
                         <ButtonPrimary onClick={this.onRun}>Run</ButtonPrimary>
                         {solution ? (
@@ -117,7 +132,7 @@ export default class SQLEditor extends React.Component {
                     className="item"
                     flexDirection="column"
                     flexBasis="0"
-                    flexGrow="1"
+                    flexGrow="6"
                 >
                     {resultComponents}
                 </Flex>

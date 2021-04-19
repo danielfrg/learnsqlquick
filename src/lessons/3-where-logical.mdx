@@ -1,0 +1,57 @@
+---
+slug: "/lessons/where-logical"
+date: "2021-04-03"
+title: "WHERE - Logical Operators"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+In addition to the [comparison operators]("/lessons/where) the logical operators
+allow you to filter data by more than one condition.
+
+## AND - OR - NOT
+
+These are the 3 most common logical operators:
+
+-   `AND` allows you to select only rows that satisfy two or more conditions
+-   `OR` allows you to select rows that satisfy either at least one condition
+-   `NOT` allows you to select rows that do not match a condition
+
+For example, lets find out the which states have more than 5 million white people
+and where there are more hispanics than black.
+
+export const l3_q1 =
+    "SELECT name, white, black, hispanic\nFROM states\nWHERE white > 5000000 AND black > hispanic"
+
+<SQLSection defaultValue={l3_q1}></SQLSection>
+
+## IS NULL
+
+`IS NULL` compares if the selected rows that contain no data in a given column.
+
+You cannot compare to NULL using the equals `=` operator because `NULL`
+is a special value in SQL and cannot be used to perform arithmetic operations.
+
+In this particular data set there are some missing values in the `below_poverty_line` columns.
+
+export const l3_q2 =
+    "SELECT name, below_poverty_line\nFROM states\nWHERE below_poverty_line IS NULL"
+
+<SQLSection defaultValue={l3_q2}></SQLSection>
+
+<p>
+    <ExerciseNote>
+        <b>Exercise: </b> What happens if you do{" "}
+        <code>WHERE below_poverty_line = NULL</code> instead?
+    </ExerciseNote>
+</p>
+
+## IN and BETWEEN
+
+-   IN compares the value of a column to a list of values
+-   BETWEEN compares the value of a column within a certain range
+
+## LIKE
+
+LIKE allows you to match similar values instead of exact values.

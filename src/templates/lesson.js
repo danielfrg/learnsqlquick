@@ -1,6 +1,6 @@
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { BaseStyles, Flex, Grid } from "@primer/components"
+import { Flex, Grid } from "@primer/components"
 import React from "react"
 import SEO from "../components/seo"
 
@@ -12,7 +12,7 @@ export default function Template({ data }) {
         <>
             <SEO title={frontmatter.title} />
             <Flex
-                className="lesson container markdown-body"
+                className="lesson container-text markdown-body"
                 flexDirection="column"
             >
                 <h1>{frontmatter.title}</h1>
