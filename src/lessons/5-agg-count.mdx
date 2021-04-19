@@ -1,0 +1,62 @@
+---
+slug: "/lessons/count"
+date: "2021-04-05"
+title: "COUNT"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+`COUNT` is part of the aggregate functions that used to perform operations across entire columns.
+This are similar to the arithmetic operations that perform operations in rows.
+
+`COUNT` counts how many rows are in a particular column.
+
+You can use `COUNT` on any column type, numerical, string, dates, and so on.
+
+We can count all rows in a table.
+
+export const l5_q1 = "SELECT COUNT(*)\nFROM states"
+
+<SQLSection defaultValue={l5_q1} autoRun={true}></SQLSection>
+
+### Count individual columns
+
+export const l5_q2 =
+    "SELECT COUNT(name), COUNT(below_poverty_line)\nFROM states"
+
+<SQLSection defaultValue={l5_q2} autoRun={true}></SQLSection>
+
+<div class="container-text flash flash-warn">
+    <p>
+        <b>
+            <code>COUNT</code> counts all not <code>NULL</code> values
+        </b>
+    </p>
+    <p>
+        As you can see in the example above the <code>COUNT</code> is different
+        for two of the columns that is because the{" "}
+        <code>below_poverty_line</code> column has one <code>NULL</code> value.
+    </p>
+</div>
+
+Remember the `AS` clause. This is very commonly used with aggregate functions
+to clean up the default names returned by SQL, e.g. `COUNT(name)`, to be more meaningful.
+
+export const l5_q3 = 'SELECT COUNT(name) AS "Number of States"\nFROM states'
+
+<SQLSection defaultValue={l5_q3} autoRun={true}></SQLSection>
+
+<div class="container-text flash flash-warn">
+    <p>
+        <b>Double quotes</b>
+    </p>
+    <p>
+        Note that we use double quotes here because we are taking about a column
+        name.
+    </p>
+    <p>
+        This is the only case where you use double quotes for everything else
+        use single quotes.
+    </p>
+</div>

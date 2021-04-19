@@ -1,0 +1,65 @@
+---
+slug: "/lessons/order-by"
+date: "2021-04-04"
+title: "ORDER BY"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+The `ORDER BY` clause allows you to reorder your results based on the data in one or more columns.
+
+This clause should be placed **after** the `WHERE` clause if there is a filter operation.
+
+export const l4_q1 =
+    "SELECT name, total_population\nFROM states\nORDER BY total_population"
+
+<SQLSection defaultValue={l4_q1} autoRun={true}></SQLSection>
+
+Note that by default `ORDER BY` sorts ascending order, starting with smaller number (or value).
+
+To change this behavior use the `DESC` clause after the column name.
+
+export const l4_q2 =
+    "SELECT name, total_population\nFROM states\nORDER BY total_population DESC"
+
+<SQLSection defaultValue={l4_q2} autoRun={true}></SQLSection>
+
+<p>
+    <ExerciseNote>
+        <b>Exercise: </b> Try using <code>ORDER BY</code> on a string column
+        such as <code>name</code>.
+    </ExerciseNote>
+</p>
+
+## Order data by multiple columns
+
+You can order the table by multiple columns. The second column will be used to order
+rows between groups of the first one, acting as a tie breaker.
+
+export const l4_q3 = "SELECT * \nFROM places"
+export const l4_q4 =
+    "SELECT name, state, hispanic\nFROM places\nORDER BY state DESC, hispanic"
+
+<SQLSection defaultValue={l4_q3} autoRun={true}></SQLSection>
+
+<ExerciseNote>
+    <p>
+        <b>Exercise: </b> Sort the <code>places</code> table by the state in descending order and
+        by the number of hispanics.
+    </p>
+
+<SQLSection defaultValue={l4_q3} autoRun={true} solution={l4_q4}></SQLSection>
+
+</ExerciseNote>
+
+## Order of execution with WHERE and LIMIT
+
+Order by is an expensive operation specially as the number of rows increases.
+the `WHERE` clause is executed **before** `ORDER BY` so be sure to filter the table
+before sorting it.
+
+`LIMIT` on the other hand is executed **after** `ORDER BY` so it will not have any
+effect on the performance of that operation.
+
+See [Order of execution](/lessons/order-execution)

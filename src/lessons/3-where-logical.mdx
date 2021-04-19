@@ -47,11 +47,53 @@ export const l3_q2 =
     </ExerciseNote>
 </p>
 
-## IN and BETWEEN
+## IN
 
--   `IN` compares the value of a column to a list of values
--   `BETWEEN` compares the value of a column within a certain range
+`IN` compares one value to a list of values.
 
-## LIKE
+For example let's say you want to get results for 3 specific states.
+
+export const l3_q3 =
+    'SELECT name, total_population\nFROM states\nWHERE name IN ('Texas', 'California', 'New York')'
+
+<SQLSection defaultValue={l3_q3}></SQLSection>
+
+## BETWEEN
+
+`BETWEEN` compares the value of a column within a certain range. This range can
+be hardcoded or another column.
+
+For example, let's find out which states have a number of hispanics between the number of blacks and 100 thousand.
+
+export const l3_q4 =
+    "SELECT name, black, hispanic\nFROM states\nWHERE hispanic BETWEEN black AND 100000"
+
+<SQLSection defaultValue={l3_q4}></SQLSection>
+
+## LIKE and ILIKE.
 
 `LIKE` allows you to match similar values instead of exact values.
+`ILIKE` is the same but case-insensitive.
+
+The most common way of using `LIKE` is to compare strings, remember the percent sign (`%`) is used as a wild card.
+
+For example, lets get all the states that start with `T`.
+
+export const l3_q5 = "SELECT name\nFROM states\nWHERE name LIKE 'T%'"
+
+<SQLSection defaultValue={l3_q5}></SQLSection>
+
+<div class="container-text flash flash-warn">
+    <p>
+        <b>Strings and single vs double quotes</b>
+    </p>
+    <p>
+        In SQL you always use single quotes (<code>'</code>) to create strings.
+    </p>
+    <p>
+        Double quotes (<code>"</code>) are used to refer to column names. For
+        example if you had a column named <code>group</code> you would wrap it
+        in double quotes so its not confused with the
+        <code>GROUP</code> statement.
+    </p>
+</div>

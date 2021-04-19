@@ -1,0 +1,45 @@
+---
+slug: "/lessons/sum"
+date: "2021-04-06"
+title: "SUM"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+`SUM` is part of the aggregate functions that are used to perform operations across entire columns (vertically).
+This are similar to the arithmetic operations that perform operations in rows (horizontally).
+
+`COUNT` adds together all the values in a particular column.
+
+You can only use `SUM` on columns containing numerical values.
+
+export const l6_q1 =
+    'SELECT SUM(total_population) AS "Total population"\nFROM states'
+
+<SQLSection defaultValue={l6_q1} autoRun={true}></SQLSection>
+
+<div class="container-text flash flash-warn">
+    <p>
+        <b>NULLs in SUM</b>
+    </p>
+    <p>
+        Don't worry (that much) about the presence of NULLs when using SUM as
+        they will be automatically treated as 0.
+    </p>
+    <p>
+        But do remember to always think about what a missing value means on the
+        context of the data and query.
+    </p>
+</div>
+
+export const l6_q2 =
+    'SELECT SUM(total_population) / COUNT(total_population) AS "AVG Population"\nFROM states'
+
+<ExerciseNote>
+    <p>
+        <b>Exercise:</b> Write a query that calculates the average number of
+        people per state (without using <code>AVG</code>).
+    </p>
+    <SQLSection solution={l6_q2}></SQLSection>
+</ExerciseNote>
