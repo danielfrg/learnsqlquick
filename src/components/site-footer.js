@@ -13,8 +13,8 @@ const SiteFooter = ({ siteTitle }) => (
                     </Header.Link>
                 </Header.Item>
                 <Header.Item>
-                    <Header.Link as={GatsbyLink} to="/tutorials">
-                        Tutorials
+                    <Header.Link as={GatsbyLink} to="/lessons">
+                        Lessons
                     </Header.Link>
                 </Header.Item>
                 <Header.Item full>

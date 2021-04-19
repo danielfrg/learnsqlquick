@@ -24,7 +24,7 @@ const IndexPage = () => {
                             </h2>
                             <h2>No subscription, no registration.</h2>
                             <p>
-                                Our <Link to="/tutorials">tutorials</Link> are
+                                Our <Link to="/lessons">lessons</Link> are
                                 straight to the point and designed to help you
                                 remember concepts and prepare for your next SQL
                                 Interview.
@@ -48,8 +48,8 @@ const IndexPage = () => {
                         <h2>Getting started</h2>
                         <Flex className="items">
                             <div className="item">
-                                <Link to="/tutorials">
-                                    <h3>Tutorials</h3>
+                                <Link to="/lessons">
+                                    <h3>Lessons</h3>
                                 </Link>
                                 <p>
                                     Remember and practice SQL concepts going
