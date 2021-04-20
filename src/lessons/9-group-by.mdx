@@ -1,0 +1,41 @@
+---
+slug: "/lessons/group-by"
+date: "2021-04-09"
+title: "GROUP BY"
+---
+
+import SQLSection from "../components/SQLSection"
+import ExerciseNote from "../components/ExerciseNote"
+
+`GROUP BY` allows you to separate data into groups, which can be aggregated independently of one another.
+
+All aggregate functions (`COUNT`, `SUM`, `MIN`, `MAX`, and `AVG`) can be use with `GROUP BY` to aggregate
+data in groups instead of aggregating in the whole table.
+
+---
+
+Let's calculate number of cities for each state in the dataset.
+
+export const l8_q1 =
+    'SELECT state, COUNT(name) AS "number of cities"\nFROM places\nGROUP BY state'
+
+<SQLSection defaultValue={l8_q1} classes="editor-wrapper"></SQLSection>
+
+<div class="container-text flash flash-warn">
+    <p>
+        <b>Using the grouped columns in SELECT</b>
+    </p>
+    <p>
+        Note that you are able to use the columns in the <code>GROUP BY</code>{" "}
+        clause in the <code>SELECT</code> statement.
+    </p>
+</div>
+
+## Group by multiple columns
+
+You can `GROUP BY` by multiple columns in the same way as `ORDER BY`.
+
+This is used to make more fined grained groups.
+
+-   The order of column names in your `GROUP BY` clause doesn't matter, the results will be the same regardless
+-   If you want to control how the aggregations are grouped together use `ORDER BY`
