@@ -22,7 +22,7 @@ that contains 3 tables:
 In the editor below we show by default the `states` table.
 Try changing the query to look at the other tables.
 
-export const l0_q1 = "SELECT *\nFROM states"
+export const l0_q1 = "SELECT *\nFROM states\nLIMIT 100"
 
 <SQLSection
     defaultValue={l0_q1}
@@ -47,7 +47,7 @@ Daily data from the Apple stock from 2017 to 2020. Taken from Yahoo! Finance.
 | close        | `float`    |
 | volume       | `int`      |
 
-export const l0_q2 = "SELECT *\nFROM apple_stock"
+export const l0_q2 = "SELECT *\nFROM apple_stock\nLIMIT 100"
 
 <SQLSection
     defaultValue={l0_q2}

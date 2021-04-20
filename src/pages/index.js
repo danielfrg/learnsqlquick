@@ -4,7 +4,6 @@ import * as React from "react"
 import SEO from "../components/seo"
 import SQLSection from "../components/SQLSection"
 
-
 const IndexPage = () => {
     const defaultQuery =
         'SELECT SUM(total_population) AS "Total Population"\nFROM states;'
@@ -18,14 +17,15 @@ const IndexPage = () => {
                         <div>
                             <h1>Learn SQL quick</h1>
                             <h2>
-                                Prepare for a job interview, an exam, homework, whatever.
+                                Prepare for a job interview, an exam, homework,
+                                whatever.
                             </h2>
                             <h2>No subscription, no registration.</h2>
                             <p>
                                 Our <Link to="/lessons">lessons</Link> go
                                 straight to the point and are designed to help
-                                you learn or remember concepts and prepare for your next
-                                SQL interview or exam.
+                                you learn or remember concepts and prepare for
+                                your next SQL interview or exam.
                             </p>
                             <p>
                                 The interactive inline SQL Editor allows you to
@@ -67,7 +67,10 @@ const IndexPage = () => {
                 </div>
                 <div className="container-xl editor-demo">
                     <h2>Try the interactive editor</h2>
-                    <SQLSection defaultValue={defaultQuery}></SQLSection>
+                    <SQLSection
+                        defaultValue={defaultQuery}
+                        classes="editor-wrapper"
+                    ></SQLSection>
                 </div>
             </div>
         </>
