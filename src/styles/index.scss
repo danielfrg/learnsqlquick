@@ -145,9 +145,11 @@
 }
 
 .sqlsection {
+    margin: 20px 0 40px;
+
     .editor-group {
         max-height: 400px;
-        margin: 20px 0;
+        margin: 0px 0;
 
         .item:not(:last-child) {
             margin-right: 20px;
