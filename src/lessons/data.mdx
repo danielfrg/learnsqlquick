@@ -10,7 +10,7 @@ Let's take a look at the different datasets that we will use during the lessons.
 
 ## US American Community Survey (ACS) Census
 
-We will use a simplified version of the [US ACS Census data of 2015](https://www.census.gov/programs-surveys/acs/technical-documentation/table-and-geography-changes/2015/1-year.html)
+A simplified version of the [US ACS Census data of 2015](https://www.census.gov/programs-surveys/acs/technical-documentation/table-and-geography-changes/2015/1-year.html)
 that contains 3 tables:
 
 | Table Name              |
@@ -26,6 +26,31 @@ export const l0_q1 = "SELECT *\nFROM states"
 
 <SQLSection
     defaultValue={l0_q1}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
+
+## Apple Stock
+
+Daily data from the Apple stock from 2017 to 2020. Taken from Yahoo! Finance.
+
+| Columns Name | Type       |
+| ------------ | ---------- |
+| date         | `datetime` |
+| year         | `int`      |
+| month        | `int`      |
+| day          | `int`      |
+| open         | `float`    |
+| high         | `float`    |
+| low          | `float`    |
+| adj_close    | `float`    |
+| close        | `float`    |
+| volume       | `int`      |
+
+export const l0_q2 = "SELECT *\nFROM apple_stock"
+
+<SQLSection
+    defaultValue={l0_q2}
     autoRun={true}
     classes="editor-wrapper"
 ></SQLSection>

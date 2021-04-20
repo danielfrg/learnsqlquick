@@ -11,7 +11,7 @@ export default class SQLite {
                 `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`,
         })
 
-        const url = "/dbs/acs-1-year-2015.sqlite"
+        const url = "/dbs/sample.sqlite"
         const dataPromise = fetch(url)
             .then(res => res.arrayBuffer())
             .catch(function (err) {})
