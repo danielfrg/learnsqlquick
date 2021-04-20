@@ -9,15 +9,15 @@ import { ExerciseNote } from "../components"
 
 `GROUP BY` allows you to separate data into groups, which can be aggregated independently of one another.
 
-All aggregate functions (`COUNT`, `SUM`, `MIN`, `MAX`, and `AVG`) can be use with `GROUP BY` to aggregate
-data in groups instead of aggregating in the whole table.
+All the aggregate functions (`COUNT`, `SUM`, `MIN`, `MAX`, and `AVG`) can be use with `GROUP BY` to aggregate
+data in the different groups instead of aggregating in the whole table.
 
 ---
 
-Let's calculate number of cities for each state in the dataset.
+For example let's calculate the total earnings mean close price for each year of the Apple stock.
 
 export const l8_q1 =
-    'SELECT state, COUNT(name) AS "number of cities"\nFROM places\nGROUP BY state'
+    'SELECT year, AVG(close) AS "mean"\nFROM apple_stock\nGROUP BY year'
 
 <SQLSection defaultValue={l8_q1} classes="editor-wrapper"></SQLSection>
 
@@ -39,3 +39,32 @@ This is used to make more fined grained groups.
 
 -   The order of column names in your `GROUP BY` clause doesn't matter, the results will be the same regardless
 -   If you want to control how the aggregations are grouped together use `ORDER BY`
+
+export const l8_q2 =
+    'SELECT year, month, AVG(close) AS "mean"\nFROM apple_stock\nGROUP BY year, month\nORDER BY month, year'
+
+<SQLSection defaultValue={l8_q2} classes="editor-wrapper"></SQLSection>
+
+## Column numbers
+
+You can substitute the column names for numbers in `GROUP BY`
+
+-   This is mostly useful when you are grouping many columns but remember that explicit is better than implicit
+    as changing the `SELECT` statement to reorder the columns might change the actual output.
+
+export const l8_q3 =
+    'SELECT year, month, AVG(close) AS "mean"\nFROM apple_stock\nGROUP BY 1, 2\nORDER BY 2, 1'
+
+<SQLSection defaultValue={l8_q3} classes="editor-wrapper"></SQLSection>
+
+export const l8_q4 =
+    'SELECT year,\n    month,\n    MIN(low) AS "lowest",\n    MAX(high) AS "highest"\nFROM apple_stock\nGROUP BY year, month\nORDER BY year, month'
+
+<ExerciseNote>
+    <p>
+        <b>Exercise:</b> Write a query that calculates the lowest and highest prices that Apple stock achieved each month.
+    </p>
+
+<SQLSection solution={l8_q4}></SQLSection>
+
+</ExerciseNote>
