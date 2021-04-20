@@ -1,7 +1,6 @@
 import { BaseStyles } from "@primer/components"
 import React from "react"
-import SiteHeader from "../components/site-header"
-import SiteFooter from "../components/site-footer"
+import { SiteFooter, SiteHeader } from "../components"
 import "../styles/index.scss"
 
 function wrapPageElement({ element }) {

@@ -1,8 +1,7 @@
 import { Flex } from "@primer/components"
 import { Link } from "gatsby"
 import * as React from "react"
-import SEO from "../components/seo"
-import SQLSection from "../components/SQLSection"
+import { SEO, SQLSection } from "../components"
 
 const IndexPage = () => {
     const defaultQuery =

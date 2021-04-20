@@ -1,7 +1,6 @@
 import { graphql } from "gatsby"
 import * as React from "react"
-import PostLink from "../components/post-link"
-import SEO from "../components/seo"
+import { PostLink, SEO } from "../components"
 
 const LessonsPage = ({
     data: {

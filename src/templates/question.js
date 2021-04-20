@@ -1,8 +1,8 @@
+import { Flex } from "@primer/components"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Flex, Grid } from "@primer/components"
 import React from "react"
-import SEO from "../components/seo"
+import { SEO } from "../components"
 
 export default function Template({ data }) {
     const { mdx } = data

@@ -1,5 +1,5 @@
 import * as React from "react"
-import SEO from "../components/seo"
+import { SEO } from "../components"
 
 const NotFoundPage = () => (
     <>

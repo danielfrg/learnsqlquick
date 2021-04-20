@@ -1,6 +1,4 @@
 import React from "react"
-import { Context as DBContext } from "../components/db-context"
-import { BorderBox } from "@primer/components"
 
 export default class SQLTable extends React.Component {
     render() {
