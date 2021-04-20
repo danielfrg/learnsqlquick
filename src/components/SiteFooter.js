@@ -23,18 +23,18 @@ const SiteFooter = ({ siteTitle }) => (
                     </Header.Link>
                 </Header.Item>
                 <Header.Item>
-                    <p>
+                    <span>
                         Built by{" "}
                         <a href="https://danielfrg.com">Daniel Rodriguez</a>
-                    </p>
+                    </span>
                 </Header.Item>
                 <Header.Item>
-                    <p>
+                    <span>
                         Source on{" "}
                         <a href="https://github.com/danielfrg/learnsqlquick">
                             GitHub
                         </a>
-                    </p>
+                    </span>
                 </Header.Item>
             </Header>
         </div>

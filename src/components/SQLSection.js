@@ -126,7 +126,7 @@ export default class SQLSection extends React.Component {
                         </ButtonGroup>
                     </Flex>
                     <Flex
-                        className="item"
+                        className="item results"
                         flexDirection="column"
                         flexGrow="1"
                         flexShrink="1"

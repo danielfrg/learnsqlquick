@@ -1,23 +1,34 @@
+import { Flex } from "@primer/components"
 import { graphql } from "gatsby"
 import * as React from "react"
-import { PostLink, SEO } from "../components"
+import { LessonsSidebar, PostLink, SEO, SiteFooter } from "../components"
 
 const LessonsPage = ({
     data: {
         allMdx: { edges },
     },
 }) => {
-    const Posts = edges.map(edge => (
+    const posts = edges.map(edge => (
         <li>
             <PostLink key={edge.node.id} post={edge.node} />
         </li>
     ))
+
     return (
-        <div className="lesson container-text markdown-body">
+        <>
             <SEO title="SQL Lessons" />
-            <h1>SQL Lessons</h1>
-            <ul>{Posts}</ul>
-        </div>
+            <Flex className="lessons-wrapper" flexDirection="row">
+                <LessonsSidebar />
+                <Flex
+                    className="lesson container-text markdown-body"
+                    flexDirection="column"
+                >
+                    <h1>SQL Lessons</h1>
+                    <ul>{posts}</ul>
+                    <SiteFooter />
+                </Flex>
+            </Flex>
+        </>
     )
 }
 

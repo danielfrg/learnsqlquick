@@ -4,6 +4,7 @@ export {
     Provider as DBProvider,
 } from "./DBContext"
 export { default as ExerciseNote } from "./ExerciseNote"
+export { default as LessonsSidebar } from "./LessonsSidebar"
 export { default as PostLink } from "./PostLink"
 export { default as SEO } from "./seo"
 export { default as SiteFooter } from "./SiteFooter"

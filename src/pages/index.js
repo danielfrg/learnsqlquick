@@ -1,7 +1,7 @@
 import { Flex } from "@primer/components"
 import { Link } from "gatsby"
 import * as React from "react"
-import { SEO, SQLSection } from "../components"
+import { SEO, SiteFooter, SQLSection } from "../components"
 
 const IndexPage = () => {
     const defaultQuery =
@@ -72,6 +72,7 @@ const IndexPage = () => {
                     ></SQLSection>
                 </div>
             </div>
+            <SiteFooter />
         </>
     )
 }
