@@ -47,7 +47,7 @@ export default class SQLSection extends React.Component {
 
     onShowSolution = () => {
         if (this.editor) {
-            this.editor.setValue(this.props.solution)
+            this.editor.setValue(this.props.solution.trim())
         }
     }
 
@@ -110,7 +110,9 @@ export default class SQLSection extends React.Component {
                             height="100%"
                             // theme="vs-dark"
                             defaultLanguage="sql"
-                            defaultValue={defaultValue}
+                            defaultValue={
+                                defaultValue ? defaultValue.trim() : null
+                            }
                             onMount={this.handleEditorDidMount}
                         />
 

@@ -1,0 +1,54 @@
+---
+slug: "/lessons/having"
+date: "2021-04-10"
+title: "HAVING"
+---
+
+import { SQLSection } from "../components"
+import { ExerciseNote } from "../components"
+
+`HAVING` allows you to filter aggregate columns.
+
+-   It works in the same way as the `WHERE` clause but `WHERE` gets executed **before**
+    `GROUP BY` and `HAVING` gets executed **after**.
+-   So you can filter both before and after `GROUP BY`
+-   It's a good practice to use `WHERE` to only aggregate the data you need for a query
+
+See [order of execution](/lessons/order-execution) for more info.
+
+---
+
+Let's find out the maximum price of the Apple stock each month and only get the times it was more than $400.
+
+export const l10_q1 = `
+SELECT year,
+       month,
+       MAX(high) AS "high"
+FROM apple_stock
+GROUP BY year, month
+HAVING MAX(high) > 100
+ORDER BY year, month`
+
+<SQLSection defaultValue={l10_q1} classes="editor-wrapper"></SQLSection>
+
+export const l10_q2 = `
+SELECT *
+FROM (
+    SELECT year,
+        month,
+        MAX(high) AS "high"
+    FROM apple_stock
+    GROUP BY year, month
+    ORDER BY year, month
+)
+WHERE high > 100
+`
+
+<ExerciseNote>
+    <p>
+        <b>Exercise:</b> Find a way to do the same query as above using <code>WHERE</code>. Hint: use a subquery.
+    </p>
+
+<SQLSection solution={l10_q2}></SQLSection>
+
+</ExerciseNote>

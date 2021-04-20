@@ -1,0 +1,100 @@
+---
+slug: "/lessons/case"
+date: "2021-04-11"
+title: "CASE"
+---
+
+import { SQLSection } from "../components"
+import { ExerciseNote } from "../components"
+
+The `CASE` statement how you handle if/then/else logic in SQL.
+
+The syntax is for `CASE` is:
+
+```sql
+CASE WHEN <condition> THEN <return-if-true> ELSE <default-return> END
+```
+
+-   The `CASE` statement **always** goes in the SELECT clause
+-   You can use any conditionals (like in `WHERE` in the `WHEN` condition
+-   You can include multiple `WHEN` statements
+-   The `ELSE` statement is optional and its used to with any unaddressed conditions
+
+## Create new columns
+
+You can use `CASE` to create new columns based on a condition.
+
+For example, let's create a new `is_small` state if its population is less than 1000000.
+
+export const l11_q1 = `
+SELECT name,
+    CASE WHEN total_population < 1000000 THEN true ELSE false END AS "is_small"
+FROM states
+`
+
+<SQLSection defaultValue={l11_q1} classes="editor-wrapper"></SQLSection>
+
+We can ofcourse filter by the new `is_small` column using `WHERE`.
+
+export const l11_q2 = `
+SELECT name,
+    CASE WHEN total_population < 1000000 THEN true ELSE false END AS "is_small"
+FROM states
+WHERE is_small = false
+`
+
+<SQLSection defaultValue={l11_q2} classes="editor-wrapper"></SQLSection>
+
+## Multiple conditions
+
+We can use multiple `WHEN-THEN` pairs to match multiple conditions.
+
+export const l11_q3 = `
+SELECT name,
+    CASE WHEN total_population BETWEEN 0 AND 1000000 THEN 'small'
+         WHEN total_population BETWEEN 1000000 AND 5000000 THEN 'medium'
+         ELSE "big"
+         END AS "size"
+FROM states
+`
+
+<SQLSection defaultValue={l11_q3} classes="editor-wrapper"></SQLSection>
+
+## Using CASE with aggregate functions
+
+One common use case with `CASE` is to use them with `GROUP BY` and aggregate functions.
+In this case we use the created columns to apply aggregated functions.
+
+For example, to count the different groups in the previous example.
+
+export const l11_q4 = `
+SELECT CASE WHEN total_population BETWEEN 0 AND 1000000 THEN 'small'
+       WHEN total_population BETWEEN 1000000 AND 5000000 THEN 'medium'
+       ELSE "big"
+       END AS "size",
+    COUNT(*)
+FROM states
+GROUP BY size
+`
+
+<SQLSection defaultValue={l11_q4} classes="editor-wrapper"></SQLSection>
+
+export const l11_q5 = `
+SELECT CASE WHEN name BETWEEN 'A' AND 'M' THEN 'A-M'
+            WHEN name BETWEEN 'M' AND 'Z' THEN 'N-Z'
+            ELSE NULL END AS group_name,
+            COUNT(*) AS "count",
+            SUM(total_population) AS "sum"
+FROM states
+GROUP BY group_name
+`
+
+<ExerciseNote>
+    <p>
+        <b>Exercise:</b> Write a query to count number of states and the total population of two groups:
+        1. State name that start from A-M 2. State name starts from N-Z.
+    </p>
+
+<SQLSection solution={l11_q5}></SQLSection>
+
+</ExerciseNote>

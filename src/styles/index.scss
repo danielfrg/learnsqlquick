@@ -20,6 +20,7 @@
     ul,
     ol,
     table,
+    pre,
     hr {
         margin-left: auto;
         margin-right: auto;
@@ -152,7 +153,8 @@
     margin: 20px 0 40px;
 
     .editor-group {
-        max-height: 400px;
+        min-height: 385px;
+        // max-height: 400px;
         margin: 0px 0;
 
         .item:not(:last-child) {

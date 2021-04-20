@@ -1,0 +1,47 @@
+---
+slug: "/lessons/distinct"
+date: "2021-04-11"
+title: "DISTINCT"
+---
+
+import { SQLSection } from "../components"
+import { ExerciseNote } from "../components"
+
+`DISTINCT` allows you to select unique elements in a table.
+Yo do with with `SELECT DISTINCT`.
+
+-   `DISTINCT` can be particularly helpful when exploring a new data set,
+    looking at the unique values on each column can help you understand the dataset
+
+---
+
+export const l12_q1 = `
+SELECT DISTINCT month
+FROM apple_stock
+`
+
+<SQLSection defaultValue={l12_q1} classes="editor-wrapper"></SQLSection>
+
+If you include two (or more) columns in a `SELECT DISTINCT` clause,
+your results will contain all of the unique pairs of those columns:
+
+export const l12_q2 = `
+SELECT DISTINCT year, month
+FROM apple_stock
+`
+
+<SQLSection defaultValue={l12_q2} classes="editor-wrapper"></SQLSection>
+
+## DISTINCT inside aggregate functions
+
+While you can use `DISTINCT` inside any aggregate function you will use it
+almost always with `COUNT`.
+
+-   `MAX` and `MIN` produce the same result with or without `DISTINCT`
+
+export const l12_q3 = `
+SELECT COUNT(DISTINCT month) AS "unique_months"
+FROM apple_stock
+`
+
+<SQLSection defaultValue={l12_q3} classes="editor-wrapper"></SQLSection>
