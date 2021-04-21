@@ -62,7 +62,7 @@ CREATE TABLE apple_stock (
     adj_close float,
     close float,
     volume int
-)
+);
 """
 )
 
@@ -74,7 +74,79 @@ apple.to_sql("apple_stock", conn, if_exists="append", index=False)
 # %%
 
 a = c.execute("SELECT * FROM apple_stock")
-a.fetchall()
+print(len(a.fetchall()))
+
+# %% football
+
+players = pd.read_csv("basketball_players.csv")
+teams = pd.read_csv("basketball_teams.csv")
+state_detail = pd.read_csv("basketball_state_detail.csv")
+
+# %%
+
+# Create tables
+c.execute(
+    """
+CREATE TABLE basketball_players (
+    school str,
+    school_short str,
+    name str,
+    position str,
+    weight int,
+    height int,
+    year str,
+    hometown str,
+    state str,
+    conference str,
+    county_code int,
+    state_code int
+)
+"""
+)
+
+c.execute(
+    """
+CREATE TABLE basketball_teams (
+    conference str,
+    conference_1 str,
+    city str,
+    url str
+)
+"""
+)
+
+
+c.execute(
+    """
+CREATE TABLE basketball_state_detail (
+   id int,
+   name str,
+   male_pop int,
+   male_age_per float,
+   male_18_to_24, float
+)
+"""
+)
+
+# %%
+
+# Insert basketball data
+
+players.to_sql("basketball_players", conn, if_exists="append", index=False)
+teams.to_sql("basketball_teams", conn, if_exists="append", index=False)
+state_detail.to_sql("basketball_state_detail", conn, if_exists="append", index=False)
+
+# %%
+
+a = c.execute("SELECT * FROM basketball_players")
+print(len(a.fetchall()))
+
+a = c.execute("SELECT * FROM basketball_teams")
+print(len(a.fetchall()))
+
+a = c.execute("SELECT * FROM basketball_state_detail")
+print(len(a.fetchall()))
+
 
 # %%
 

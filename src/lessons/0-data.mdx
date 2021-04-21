@@ -22,7 +22,11 @@ that contains 3 tables:
 In the editor below we show by default the `states` table.
 Try changing the query to look at the other tables.
 
-export const l0_q1 = "SELECT *\nFROM states\nLIMIT 100"
+export const l0_q1 = `
+SELECT *
+FROM states
+LIMIT 100
+`
 
 <SQLSection
     defaultValue={l0_q1}
@@ -47,10 +51,36 @@ Daily data from the Apple stock from 2017 to 2020. Taken from Yahoo! Finance.
 | close        | `float`    |
 | volume       | `int`      |
 
-export const l0_q2 = "SELECT *\nFROM apple_stock\nLIMIT 100"
+export const l0_q2 = `
+SELECT *
+FROM apple_stock
+LIMIT 100
+`
 
 <SQLSection
     defaultValue={l0_q2}
+    autoRun={true}
+    classes="editor-wrapper"
+></SQLSection>
+
+## College basketball players
+
+3 tables with player, team and state information.
+
+| Table Name               |
+| ------------------------ |
+| basketball_players       |
+| basketball_team          |
+| basketball_state details |
+
+export const l0_q3 = `
+SELECT *
+FROM basketball_players
+LIMIT 100
+`
+
+<SQLSection
+    defaultValue={l0_q3}
     autoRun={true}
     classes="editor-wrapper"
 ></SQLSection>
