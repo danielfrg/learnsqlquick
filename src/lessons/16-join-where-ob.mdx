@@ -1,0 +1,53 @@
+---
+slug: "/lessons/join-where-vs-on"
+date: "2021-04-16"
+title: "JOIN - WHERE vs ON"
+---
+
+import { SQLSection } from "../components"
+import { ExerciseNote } from "../components"
+
+You can use `WHERE` to filter tables after they have been joined as you would expect.
+
+But there is the option to add extra conditions to the `ON` statement
+that filter one or more of the tables.
+
+-   This filter will be executed **before** the tables are joined
+-   This will improve the performance of the query since `JOIN` is an expensive operation
+
+---
+
+Let's do a `JOIN` but add and `AND` statement to the `ON` to filter players by a particular position.
+
+export const l16_q1 = `
+SELECT P.name AS "player", P.position, S.name AS "state"
+FROM basketball_players P
+JOIN basketball_state_detail S
+    ON P.state_code = S.id
+    AND P.position = 'F'
+LIMIT 100
+`
+
+<SQLSection defaultValue={l16_q1} classes="editor-wrapper"></SQLSection>
+
+Why can do the same using `WHERE`.
+
+export const l16_q2 = `
+SELECT P.name AS "player", P.position, S.name AS "state"
+FROM basketball_players P
+JOIN basketball_state_detail S
+    ON P.state_code = S.id
+WHERE P.position = 'F'
+LIMIT 100
+`
+
+<SQLSection defaultValue={l16_q2} classes="editor-wrapper"></SQLSection>
+
+<div class="container-text flash flash-warn">
+    <p>
+        Note that depending on the type of <code>JOIN</code> and the filter
+        condition the result of the queries can be different. Think about the
+        result you actually need and the structure of the tables.
+    </p>
+    <p>You can also do subqueries to filter tables before joining them.</p>
+</div>

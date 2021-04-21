@@ -42,7 +42,7 @@ Let's `JOIN` two of the basketball tables.
 We can `JOIN` this to tables `ON` the `state`s columns.
 
 export const l13_q1 = `
-SELECT P.name, S.name
+SELECT P.name AS "player", S.name AS "state"
 FROM basketball_players P
 JOIN basketball_state_detail S
     ON P.state_code = S.id
