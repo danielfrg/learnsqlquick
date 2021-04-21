@@ -5,11 +5,6 @@ module.exports = {
         author: `@danielfrg`,
     },
     plugins: [
-        `gatsby-plugin-styled-components`,
-        `gatsby-plugin-react-helmet`,
-        `gatsby-plugin-remove-trailing-slashes`,
-        `gatsby-plugin-sass`,
-        `gatsby-plugin-image`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -31,31 +26,45 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
-        // `gatsby-transformer-remark`,
+        `gatsby-plugin-image`,
+        `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
-        `gatsby-plugin-mdx`,
+        `gatsby-transformer-remark`,
+        `gatsby-remark-images`,
         {
-            resolve: `gatsby-plugin-google-gtag`,
+            resolve: `gatsby-plugin-mdx`,
             options: {
-                // You can add multiple tracking ids and a pageview event will be fired for all of them.
-                trackingIds: [
-                    "UA-35523657-9", // Google Analytics / GA
-                    "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-                    "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+                root: __dirname,
+                gatsbyRemarkPlugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 1280,
+                        },
+                    },
                 ],
             },
         },
-        `gatsby-plugin-sharp`,
+        `gatsby-plugin-remove-trailing-slashes`,
+        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-sass`,
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `gatsby-starter-default`,
-                short_name: `starter`,
+                name: `learn-sql-quick`,
+                short_name: `learn-sql-quick`,
                 start_url: `/`,
                 background_color: `#663399`,
                 theme_color: `#663399`,
                 display: `minimal-ui`,
                 icon: `src/images/page-icon.png`, // This path is relative to the root of the site.
+            },
+        },
+        {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                trackingIds: ["UA-35523657-9"],
             },
         },
         `gatsby-plugin-gatsby-cloud`,

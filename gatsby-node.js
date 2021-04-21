@@ -19,7 +19,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
 
-    if (_.get(node, "internal.type") === `Mdx`) {
+    if (node.internal.type === "Mdx") {
         // Get the parent node
         const parent = getNode(_.get(node, "parent"))
 
@@ -34,6 +34,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
 
+    // Ger all MDX content
     const results = await graphql(`
         query ALL_CONTENT {
             allMdx(
@@ -64,8 +65,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const lessonTemplate = path.resolve(`src/templates/lesson.js`)
     const questionTemplate = path.resolve(`src/templates/question.js`)
 
+    // Split MDX content per collection
     const allEdges = results.data.allMdx.edges
-
     const lessonEdges = allEdges.filter(
         edge => edge.node.fields.collection === `lesson`
     )
@@ -73,6 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edge => edge.node.fields.collection === `question`
     )
 
+    // Create Lesson pages
     _.each(lessonEdges, (edge, index) => {
         const previous =
             index === lessonEdges.length - 1
@@ -91,6 +93,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
     })
 
+    // Create Question pages
     _.each(questionEdges, (edge, index) => {
         const previous =
             index === questionEdges.length - 1
